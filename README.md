@@ -2,7 +2,7 @@
 
 **Abstract**
 
-This paper describes the Visualization Toolkit (VTK) Conformal Flattening Filter: ConformalFlatteningFilter. This VTK Polydata Algorithm is an implementation of a paper by Sigurd Angenent, et al., “On the Laplace-Beltrami Operator and Brain Surface Flattening” [1]. This filter performs an angle preserving map of any genus zero (i.e. no handles) surface to the sphere or, alternatively, to the plane. In this paper, we describe the code and provide the user with enough details to reproduce the results which we present in this paper. This filter has a variety of applications including the flattening of brain surfaces, which was the initial motivation for this work.
+This paper describes the Visualization Toolkit (VTK) Conformal Flattening Filter: $ConformalFlatteningFilter$. This VTK Polydata Algorithm is an implementation of a paper by Sigurd Angenent, et al., “On the Laplace-Beltrami Operator and Brain Surface Flattening” [1]. This filter performs an angle preserving map of any genus zero (i.e. no handles) surface to the sphere or, alternatively, to the plane. In this paper, we describe the code and provide the user with enough details to reproduce the results which we present in this paper. This filter has a variety of applications including the flattening of brain surfaces, which was the initial motivation for this work.
 
 
 
@@ -38,15 +38,14 @@ and
 
 The filter has several APIs for further manipulation of the output.
 
+
+1. $setPointP$ function. On the right side of equation (1), the  $\delta p$  function depends on the location of the point $p$. Basically, this point will be mapped to infinity on the plane and the north-pole of the sphere. Hence the selection of the point $p$ determines which patch on the original mesh is mapped up to the north pole. 
+
  
 
-1. setPointP function. On the right side of equation (1), the ![img](file:///C:/Users/GIGABYTE/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png) function depends on the location of the point ![img](file:///C:/Users/GIGABYTE/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png). Basically, this point will be mapped to infinity on the plane and the north-pole of the sphere. Hence the selection of the point ![img](file:///C:/Users/GIGABYTE/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png) determines which patch on the original mesh is mapped up to the north pole. 
+The API setPointP takes an integer as input indicating the cell number in which the point $p$  lies. It’s a good choice to set the point $p$  where the local surface is relatively flat, i.e., having a small local curvature. If setting the point $p$ at some flat area is crucial, we suggest that user first use $vtkCurvatures$ to obtain the number of cells having low curvatures and then call this function using one of the cells with a low curvature.
 
- 
-
-The API setPointP takes an integer as input indicating the cell number in which the point ![img](file:///C:/Users/GIGABYTE/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png) lies. It’s a good choice to set the point ![img](file:///C:/Users/GIGABYTE/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png) where the local surface is relatively flat, i.e., having a small local curvature. If setting the point ![img](file:///C:/Users/GIGABYTE/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png) at some flat area is crucial, we suggest that user first use vtkCurvatures to obtain the number of cells having low curvatures and then call this function using one of the cells with a low curvature.
-
-2. The switch functions mapToPlane and mapToSphere determine the output to be either a plane or a sphere, the sphere being the default. The difference between the two mappings is simply a stereographic projection from the plane to the sphere. Simply by
+2. The switch functions $mapToPlane$ and $mapToSphere$ determine the output to be either a plane or a sphere, the sphere being the default. The difference between the two mappings is simply a stereographic projection from the plane to the sphere. Simply by
 
  
 
@@ -62,7 +61,7 @@ users can switch between two different outputs.
 
 ![img](file:///C:/Users/GIGABYTE/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg)
 
-3. setScale function. The mapping, calculated from the equation (1), is dependent on the number of the nodes within the mesh. Given a mesh of a large number of nodes and cells, the image of the flattening mapping, is constrained in a small range around origin. To make it cover a sufficient area of the plane and further get a reasonable result from stereographic projection, re-scale of the flattened plane is needed. This function is used to set the scale factor, by:
+3. $setScale$ function. The mapping, calculated from the equation (1), is dependent on the number of the nodes within the mesh. Given a mesh of a large number of nodes and cells, the image of the flattening mapping, is constrained in a small range around origin. To make it cover a sufficient area of the plane and further get a reasonable result from stereographic projection, re-scale of the flattened plane is needed. This function is used to set the scale factor, by:
 
  
 
