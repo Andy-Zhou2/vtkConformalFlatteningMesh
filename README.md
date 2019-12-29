@@ -58,8 +58,7 @@ or
  
 
 users can switch between two different outputs.
-
-![img](file:///C:/Users/GIGABYTE/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg)
+![PnwCXj.png](https://piccdn.freejishu.com/images/2019/12/29/PnwCXj.png)
 
 3. $setScale$ function. The mapping, calculated from the equation (1), is dependent on the number of the nodes within the mesh. Given a mesh of a large number of nodes and cells, the image of the flattening mapping, is constrained in a small range around origin. To make it cover a sufficient area of the plane and further get a reasonable result from stereographic projection, re-scale of the flattened plane is needed. This function is used to set the scale factor, by:
 
