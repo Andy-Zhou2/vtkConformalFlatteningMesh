@@ -52,7 +52,7 @@ The filter has several APIs for further manipulation of the output.
 
 ​	users can switch between two different outputs.
 
-![PnwCXj.png](https://piccdn.freejishu.com/images/2019/12/29/PnwCXj.png)
+![fig 2](https://raw.githubusercontent.com/Flesh12138/pic/master/pic_1.png?token=AEZVD2TW4EKV2XM6XIBAJATBPA2KU)
 
 3. *setScale* function. The mapping, calculated from the equation (1), is dependent on the number of the nodes within the mesh. Given a mesh of a large number of nodes and cells, the image of the flattening mapping, is constrained in a small range around origin. To make it cover a sufficient area of the plane and further get a reasonable result from stereographic projection, re-scale of the flattened plane is needed. This function is used to set the scale factor, by:
 
